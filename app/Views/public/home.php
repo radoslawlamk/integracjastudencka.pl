@@ -407,17 +407,9 @@
             <?= spam_trap_field() ?>
             <label>Miasto
                 <select name="city" required>
-                    <option value="Katowice">Katowice</option>
-                    <option value="Trójmiasto">Trójmiasto</option>
-                    <option value="Warszawa">Warszawa</option>
-                    <option value="Kraków">Kraków</option>
-                    <option value="Wrocław">Wrocław</option>
-                    <option value="Poznań">Poznań</option>
-                    <option value="Łódź">Łódź</option>
-                    <option value="Radom">Radom</option>
-                    <option value="Częstochowa">Częstochowa</option>
-                    <option value="Bielsko-Biała">Bielsko-Biała</option>
-                    <option value="Zielona Góra">Zielona Góra</option>
+                    <?php foreach (($academicCities ?? []) as $cityName): ?>
+                        <option value="<?= e($cityName) ?>" <?= $cityName === 'Katowice' ? 'selected' : '' ?>><?= e($cityName) ?></option>
+                    <?php endforeach; ?>
                 </select>
             </label>
             <label>Imię <input name="name" placeholder="np. Ola" required></label>

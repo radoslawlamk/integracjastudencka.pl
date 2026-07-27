@@ -114,6 +114,7 @@ final class PublicController
             ],
             'events' => $events,
             'cities' => Event::cities(),
+            'academicCities' => self::ACADEMIC_CITIES,
             'months' => Event::months(),
             'newsArticles' => NewsArticle::published(),
         ]);
