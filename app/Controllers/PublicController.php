@@ -100,8 +100,8 @@ final class PublicController
     {
         $events = Event::published($_GET['city'] ?? null, $_GET['month'] ?? null);
         return View::render('public/home', [
-            'title' => 'Integracja Studencka - wydarzenia studenckie',
-            'metaDescription' => 'Największe i najważniejsze imprezy w miastach akademickich. Sprawdź inauguracje, integracje, otrzęsiny, połowinki i juwenalia.',
+            'title' => 'Największe imprezy studenckie w Polsce | Integracja Studencka',
+            'metaDescription' => 'Sprawdź najważniejsze wydarzenia akademickie, zapisz się na powiadomienia i dołącz do największych imprez studenckich w Polsce.',
             'metaImage' => '/assets/images/hero-students-party.png',
             'canonicalPath' => '/',
             'structuredData' => [
