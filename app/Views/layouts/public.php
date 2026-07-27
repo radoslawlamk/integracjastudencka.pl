@@ -29,6 +29,13 @@ $absoluteUrl = static function (?string $value) use ($baseUrl): string {
 $pageUrl = $absoluteUrl($canonicalPath);
 $canonicalUrl = $absoluteUrl($canonicalPath);
 $pageImage = $absoluteUrl($pageImage);
+$pageImageSecure = preg_replace('~^http://~i', 'https://', $pageImage);
+$pageImagePath = parse_url($pageImage, PHP_URL_PATH) ?: '';
+$pageImageLocalPath = $pageImagePath ? realpath(__DIR__ . '/../../../public' . $pageImagePath) : false;
+$pageImageInfo = ($pageImageLocalPath && is_file($pageImageLocalPath)) ? @getimagesize($pageImageLocalPath) : false;
+$pageImageWidth = $pageImageInfo[0] ?? 1200;
+$pageImageHeight = $pageImageInfo[1] ?? 630;
+$pageImageType = $pageImageInfo['mime'] ?? 'image/png';
 $shareTitle = $pageTitle;
 $shareText = trim($pageTitle . ' - ' . $pageDescription);
 $encodedShareUrl = rawurlencode($pageUrl);
@@ -70,6 +77,10 @@ $structuredData = $structuredData ? $normalizeStructuredUrls($structuredData) : 
     <meta property="og:description" content="<?= e($pageDescription) ?>">
     <meta property="og:url" content="<?= e($pageUrl) ?>">
     <meta property="og:image" content="<?= e($pageImage) ?>">
+    <meta property="og:image:secure_url" content="<?= e($pageImageSecure) ?>">
+    <meta property="og:image:type" content="<?= e($pageImageType) ?>">
+    <meta property="og:image:width" content="<?= e((string) $pageImageWidth) ?>">
+    <meta property="og:image:height" content="<?= e((string) $pageImageHeight) ?>">
     <meta property="og:image:alt" content="<?= e($pageTitle) ?>">
 
     <meta name="twitter:card" content="summary_large_image">
