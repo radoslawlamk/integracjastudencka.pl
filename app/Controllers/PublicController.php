@@ -102,7 +102,7 @@ final class PublicController
         return View::render('public/home', [
             'title' => 'Największe imprezy studenckie w Polsce | Integracja Studencka',
             'metaDescription' => 'Sprawdź najważniejsze wydarzenia akademickie, zapisz się na powiadomienia i dołącz do największych imprez studenckich w Polsce.',
-            'metaImage' => '/assets/images/hero-students-party.png',
+            'metaImage' => '/assets/images/social-home.png',
             'canonicalPath' => '/',
             'structuredData' => [
                 '@context' => 'https://schema.org',
