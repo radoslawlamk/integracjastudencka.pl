@@ -7,6 +7,31 @@ use PDO;
 
 final class Event
 {
+    private static function cityTokens(string $city): array
+    {
+        $tokens = array_map('trim', explode(',', $city));
+        $tokens = array_filter($tokens, static fn (string $token): bool => $token !== '');
+        return array_values(array_unique($tokens));
+    }
+
+    private static function cityFilterSql(string $city, array &$params): string
+    {
+        $params[] = $city;
+        return "CONCAT(',', REPLACE(city, ', ', ','), ',') LIKE CONCAT('%,', ?, ',%')";
+    }
+
+    private static function cityListFromRows(array $rows): array
+    {
+        $cities = [];
+        foreach ($rows as $row) {
+            foreach (self::cityTokens((string) $row) as $city) {
+                $cities[$city] = $city;
+            }
+        }
+        natcasesort($cities);
+        return array_values($cities);
+    }
+
     private static function activeDateSql(): string
     {
         return "COALESCE(ends_at, DATE_ADD(starts_at, INTERVAL 6 HOUR)) >= NOW()";
@@ -25,8 +50,7 @@ final class Event
             $sql .= " AND " . self::activeDateSql();
         }
         if ($city) {
-            $sql .= " AND city = ?";
-            $params[] = $city;
+            $sql .= " AND " . self::cityFilterSql($city, $params);
         }
         if ($month && preg_match('/^\d{4}-\d{2}$/', $month)) {
             $sql .= " AND DATE_FORMAT(starts_at, '%Y-%m') = ?";
@@ -55,8 +79,7 @@ final class Event
         $params = [];
 
         if ($city) {
-            $sql .= " AND city = ?";
-            $params[] = $city;
+            $sql .= " AND " . self::cityFilterSql($city, $params);
         }
 
         if ($showOnly === 'missing_ticket') {
@@ -94,10 +117,24 @@ final class Event
 
     public static function relatedByCity(string $city, int $excludeId, int $limit = 6): array
     {
-        $stmt = Database::pdo()->prepare("SELECT * FROM events WHERE status = 'published' AND city = ? AND id <> ? AND " . self::activeDateSql() . " ORDER BY starts_at ASC LIMIT ?");
-        $stmt->bindValue(1, $city);
-        $stmt->bindValue(2, $excludeId, PDO::PARAM_INT);
-        $stmt->bindValue(3, $limit, PDO::PARAM_INT);
+        $params = [];
+        $cityConditions = [];
+        foreach (self::cityTokens($city) as $cityToken) {
+            $cityConditions[] = self::cityFilterSql($cityToken, $params);
+        }
+        if (!$cityConditions) {
+            $cityConditions[] = "city = ?";
+            $params[] = $city;
+        }
+
+        $sql = "SELECT * FROM events WHERE status = 'published' AND (" . implode(' OR ', $cityConditions) . ") AND id <> ? AND " . self::activeDateSql() . " ORDER BY starts_at ASC LIMIT ?";
+        $stmt = Database::pdo()->prepare($sql);
+        $index = 1;
+        foreach ($params as $value) {
+            $stmt->bindValue($index++, $value);
+        }
+        $stmt->bindValue($index++, $excludeId, PDO::PARAM_INT);
+        $stmt->bindValue($index, $limit, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -160,12 +197,14 @@ final class Event
 
     public static function cities(): array
     {
-        return Database::pdo()->query("SELECT DISTINCT city FROM events WHERE status = 'published' AND " . self::activeDateSql() . " ORDER BY city")->fetchAll(PDO::FETCH_COLUMN);
+        $rows = Database::pdo()->query("SELECT city FROM events WHERE status = 'published' AND " . self::activeDateSql() . " ORDER BY city")->fetchAll(PDO::FETCH_COLUMN);
+        return self::cityListFromRows($rows);
     }
 
     public static function allCities(): array
     {
-        return Database::pdo()->query("SELECT DISTINCT city FROM events WHERE city IS NOT NULL AND city <> '' ORDER BY city")->fetchAll(PDO::FETCH_COLUMN);
+        $rows = Database::pdo()->query("SELECT city FROM events WHERE city IS NOT NULL AND city <> '' ORDER BY city")->fetchAll(PDO::FETCH_COLUMN);
+        return self::cityListFromRows($rows);
     }
 
     public static function months(): array

@@ -70,7 +70,7 @@
                 <input type="hidden" name="redirect_to" value="<?= e($_SERVER['REQUEST_URI'] ?? '/news/' . $article['slug']) ?>">
                 <label>Miasto
                     <select name="city" required>
-                        <?php foreach (['Białystok','Bydgoszcz','Częstochowa','Katowice','Kielce','Kraków','Łódź','Lublin','Olsztyn','Opole','Poznań','Radom','Rzeszów','Szczecin','Tarnów','Toruń','Trójmiasto','Warszawa','Wrocław','Zielona Góra'] as $city): ?>
+                        <?php foreach (['Białystok','Bydgoszcz','Gdańsk','Gdynia','Częstochowa','Katowice','Kielce','Kraków','Łódź','Lublin','Olsztyn','Opole','Poznań','Radom','Rzeszów','Sopot','Szczecin','Tarnów','Toruń','Trójmiasto','Warszawa','Wrocław','Zielona Góra'] as $city): ?>
                             <option value="<?= e($city) ?>" <?= $city === 'Katowice' ? 'selected' : '' ?>><?= e($city) ?></option>
                         <?php endforeach; ?>
                     </select>

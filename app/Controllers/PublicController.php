@@ -18,6 +18,8 @@ final class PublicController
     private const ACADEMIC_CITIES = [
         'bialystok' => 'Białystok',
         'bydgoszcz' => 'Bydgoszcz',
+        'gdansk' => 'Gdańsk',
+        'gdynia' => 'Gdynia',
         'czestochowa' => 'Częstochowa',
         'katowice' => 'Katowice',
         'kielce' => 'Kielce',
@@ -29,6 +31,7 @@ final class PublicController
         'poznan' => 'Poznań',
         'radom' => 'Radom',
         'rzeszow' => 'Rzeszów',
+        'sopot' => 'Sopot',
         'szczecin' => 'Szczecin',
         'tarnow' => 'Tarnów',
         'torun' => 'Toruń',
@@ -99,6 +102,9 @@ final class PublicController
     public function home(): string
     {
         $events = Event::published($_GET['city'] ?? null, $_GET['month'] ?? null);
+        $calendarCities = array_values(array_unique(array_merge(array_values(self::ACADEMIC_CITIES), Event::cities())));
+        natcasesort($calendarCities);
+
         return View::render('public/home', [
             'title' => 'Największe imprezy studenckie w Polsce | Integracja Studencka',
             'metaDescription' => 'Sprawdź najważniejsze wydarzenia akademickie, zapisz się na powiadomienia i dołącz do największych imprez studenckich w Polsce.',
@@ -113,7 +119,7 @@ final class PublicController
                 'inLanguage' => 'pl-PL',
             ],
             'events' => $events,
-            'cities' => Event::cities(),
+            'cities' => array_values($calendarCities),
             'academicCities' => self::ACADEMIC_CITIES,
             'months' => Event::months(),
             'newsArticles' => NewsArticle::published(),
@@ -321,15 +327,21 @@ final class PublicController
             return trim($value, '-');
         };
 
-        foreach (self::ACADEMIC_CITIES as $slug => $name) {
-            if ($normalize($name) === $normalize($city)) {
-                return $slug;
+        foreach (array_map('trim', explode(',', $city)) as $cityToken) {
+            if ($cityToken === '') {
+                continue;
             }
-        }
 
-        $fallbackSlug = $slugify($city);
-        if (isset(self::ACADEMIC_CITIES[$fallbackSlug])) {
-            return $fallbackSlug;
+            foreach (self::ACADEMIC_CITIES as $slug => $name) {
+                if ($normalize($name) === $normalize($cityToken)) {
+                    return $slug;
+                }
+            }
+
+            $fallbackSlug = $slugify($cityToken);
+            if (isset(self::ACADEMIC_CITIES[$fallbackSlug])) {
+                return $fallbackSlug;
+            }
         }
 
         return null;
