@@ -142,7 +142,9 @@ alt=""></noscript>
     <a href="/polityka-prywatnosci">Polityka prywatności</a>
     <a href="/polityka-cookies">Cookies</a>
     <a href="/wycofaj-zgody">Wycofaj zgody</a>
+    <?php /* Tymczasowo ukryte archiwum; przywroc razem z trasa i wpisem sitemap.
     <a href="/archiwum">Archiwum</a>
+    */ ?>
     <a href="/mapa-strony">Mapa strony</a>
 </nav>
 <aside class="share-widget" aria-label="Udostępnij stronę" data-share-widget data-share-url="<?= e($pageUrl) ?>" data-share-title="<?= e($shareTitle) ?>" data-share-text="<?= e($shareText) ?>">

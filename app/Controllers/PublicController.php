@@ -150,7 +150,8 @@ final class PublicController
         $urls = [
             ['loc' => '/', 'priority' => '1.0', 'changefreq' => 'daily'],
             ['loc' => '/miasta', 'priority' => '0.9', 'changefreq' => 'weekly'],
-            ['loc' => '/archiwum', 'priority' => '0.5', 'changefreq' => 'monthly'],
+            // Tymczasowo ukryte archiwum; przywroc razem z trasa i linkiem w stopce.
+            // ['loc' => '/archiwum', 'priority' => '0.5', 'changefreq' => 'monthly'],
             ['loc' => '/mapa-strony', 'priority' => '0.55', 'changefreq' => 'monthly'],
         ];
 

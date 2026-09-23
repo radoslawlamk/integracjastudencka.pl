@@ -8,7 +8,8 @@ $router->get('/', [PublicController::class, 'home']);
 $router->get('/robots.txt', [PublicController::class, 'robots']);
 $router->get('/sitemap.xml', [PublicController::class, 'sitemap']);
 $router->get('/mapa-strony', [PublicController::class, 'htmlSitemap']);
-$router->get('/archiwum', [PublicController::class, 'archive']);
+// Tymczasowo wylaczone archiwum (404). Aby przywrocic, odkomentuj trase i linki.
+// $router->get('/archiwum', [PublicController::class, 'archive']);
 $router->get('/inauguracja-studencka', [PublicController::class, 'eventTypePage']);
 $router->get('/integracja-studencka', [PublicController::class, 'eventTypePage']);
 $router->get('/otrzesiny-studenckie', [PublicController::class, 'eventTypePage']);
