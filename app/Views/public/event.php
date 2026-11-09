@@ -403,10 +403,6 @@ $clubbingEmbedVideos = [
                     <small>Dodasz go w CRM</small>
                 </article>
             <?php endif; ?>
-            <article class="event-partner-cta">
-                <strong>Chcesz zostać partnerem?</strong>
-                <a href="/#partnerzy">Napisz do nas</a>
-            </article>
         </div>
     </section>
 

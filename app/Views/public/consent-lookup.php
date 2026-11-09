@@ -5,7 +5,7 @@
         <p>Wpisz adres e-mail lub numer telefonu użyty przy zapisie na powiadomienia. Jeżeli znajdziemy kontakt w bazie, pokażemy formularz, w którym możesz wyłączyć powiadomienia email, SMS albo oba kanały.</p>
 
         <?php if ($status === 'nie_znaleziono'): ?>
-            <p class="legal-error">Nie znaleźliśmy takiego kontaktu w bazie powiadomień. Sprawdź wpisane dane albo skontaktuj się z nami: kontakt@integracjastudencka.pl.</p>
+            <p class="legal-error">Nie znaleźliśmy takiego kontaktu w bazie powiadomień. Sprawdź wpisane dane i spróbuj ponownie.</p>
         <?php endif; ?>
 
         <form method="post" action="/wycofaj-zgody" class="consent-manage-form">

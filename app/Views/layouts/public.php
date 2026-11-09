@@ -128,14 +128,12 @@ alt=""></noscript>
     <div>
         <p>Bilety i najważniejsze wydarzenia</p>
         <h2>Wybierz miasto akademickie i dołącz do największych imprez studenckich.</h2>
-        <span>Kontakt z nami: <a href="mailto:kontakt@integracjastudencka.pl">kontakt@integracjastudencka.pl</a></span>
     </div>
     <a class="bottom-cta-button" href="/#wydarzenia">Sprawdź kalendarz</a>
 </section>
 <footer class="site-footer">
     <strong>Integracja Studencka</strong>
     <span>Największe i najważniejsze imprezy w miastach akademickich</span>
-    <span>Kontakt: kontakt@integracjastudencka.pl</span>
 </footer>
 <nav class="legal-footer-links" aria-label="Linki prawne">
     <a href="/regulamin">Regulamin</a>

@@ -35,7 +35,6 @@ $router->get('/wydarzenia', [PublicController::class, 'events']);
 $router->get('/wydarzenia/{slug}', [PublicController::class, 'event']);
 $router->post('/kontakt-marketingowy', [PublicController::class, 'marketingSignup']);
 $router->post('/powiadom-o-biletach', [PublicController::class, 'ticketWaitlistSignup']);
-$router->post('/kontakt-partnerski', [PublicController::class, 'partnerContact']);
 $router->post('/analityka/klikniecie', [PublicController::class, 'trackEventClick']);
 
 $router->get('/admin/login', [AuthController::class, 'login']);

@@ -260,38 +260,11 @@
                     <p>Ogólnopolski profil studencki wspierający komunikację największych wydarzeń akademickich.</p>
                 </div>
             </a>
-
-            <article class="partner-cta">
-                <span>Zostań partnerem wydarzeń</span>
-                <h3>Czy chcesz promować markę przy wydarzeniach studenckich?</h3>
-                <p>Napisz do nas i opisz, w jakich miastach albo przy jakich wydarzeniach chcesz się pojawić.</p>
-                <button class="btn primary partner-open" type="button" data-show-partner-form>Napisz do nas</button>
-            </article>
         </div>
-
-        <form class="partner-form" method="post" action="/kontakt-partnerski" id="partnerForm" hidden>
-            <?= csrf_field() ?>
-            <?= spam_trap_field() ?>
-            <label>Imię i nazwisko <input name="name" required></label>
-            <label>Email <input type="email" name="email" required></label>
-            <label>Firma / projekt <input name="company"></label>
-            <label>Telefon <input name="phone"></label>
-            <label class="wide">Wiadomość <textarea name="message" rows="5" required placeholder="Napisz, w jakich miastach lub przy jakich wydarzeniach chcesz się pojawić."></textarea></label>
-            <button class="btn primary">Wyślij wiadomość</button>
-        </form>
     </section>
 
     <script>
     document.addEventListener('click', function (event) {
-        const button = event.target.closest('[data-show-partner-form]');
-        if (button) {
-            const form = document.getElementById('partnerForm');
-            if (!form) return;
-            form.hidden = false;
-            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            return;
-        }
-
         const prev = event.target.closest('[data-city-prev]');
         const next = event.target.closest('[data-city-next]');
         if (prev || next) {
