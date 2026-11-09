@@ -1,7 +1,7 @@
 <main>
     <section class="type-page-hero">
         <div>
-            <p class="eyebrow">Jakie imprezy organizujemy?</p>
+            <p class="eyebrow">Jakie wydarzenia promujemy?</p>
             <h1><?= e($type['name']) ?></h1>
             <p><?= e($type['description']) ?> Wybierz miasto, sprawdź najbliższe terminy i zapisz się na powiadomienia, jeśli czekasz na kolejną edycję.</p>
             <div class="hero-actions">
@@ -15,9 +15,9 @@
         <div>
             <p class="eyebrow">Od 2010 roku</p>
             <h2><?= e($type['name']) ?> w miastach akademickich</h2>
-            <p>Od 2010 roku tworzymy największe wydarzenia studenckie w Polsce. Integrujemy tysiące studentów podczas imprez, które na długo zostają w pamięci.</p>
+            <p>Od 2010 roku promujemy wydarzenia studenckie i akademickie w Polsce. Pomagamy studentom odkrywać imprezy i znajdować informacje o najbliższych terminach.</p>
         </div>
-        <strong>Ogromna frekwencja i wyjątkowa atmosfera - to nasz znak rozpoznawczy.</strong>
+        <strong>Odkrywaj wydarzenia, poznawaj ich program i wybieraj akademickie imprezy dla siebie.</strong>
     </section>
 
     <section class="section" id="wydarzenia-typu">

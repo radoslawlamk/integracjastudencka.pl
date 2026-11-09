@@ -66,6 +66,9 @@ $structuredData = $structuredData ? $normalizeStructuredUrls($structuredData) : 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php if (!empty($metaRobots)): ?>
+        <meta name="robots" content="<?= e($metaRobots) ?>">
+    <?php endif; ?>
     <title><?= e($pageTitle) ?></title>
     <meta name="description" content="<?= e($pageDescription) ?>">
     <link rel="canonical" href="<?= e($canonicalUrl) ?>">
@@ -133,7 +136,8 @@ alt=""></noscript>
 </section>
 <footer class="site-footer">
     <strong>Integracja Studencka</strong>
-    <span>Największe i najważniejsze imprezy w miastach akademickich</span>
+    <span>Promotor wydarzeń studenckich i akademickich</span>
+    <span>Integracja Studencka promuje wydarzenia. Ich organizację prowadzą odrębni organizatorzy.</span>
 </footer>
 <nav class="legal-footer-links" aria-label="Linki prawne">
     <a href="/regulamin">Regulamin</a>

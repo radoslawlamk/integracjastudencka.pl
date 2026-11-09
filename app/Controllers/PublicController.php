@@ -164,6 +164,9 @@ final class PublicController
         }
 
         foreach (Event::published(null, null, true) as $event) {
+            if (event_sales_state($event)['finished']) {
+                continue;
+            }
             $urls[] = [
                 'loc' => '/wydarzenia/' . $event['slug'],
                 'priority' => '0.8',
@@ -206,7 +209,7 @@ final class PublicController
             'canonicalPath' => '/mapa-strony',
             'cities' => self::ACADEMIC_CITIES,
             'eventTypes' => self::EVENT_TYPE_PAGES,
-            'events' => Event::published(null, null, true),
+            'events' => array_values(array_filter(Event::published(null, null, true), static fn (array $event): bool => !event_sales_state($event)['finished'])),
             'newsArticles' => NewsArticle::publishedAll(),
         ]);
     }
@@ -218,6 +221,7 @@ final class PublicController
             'metaDescription' => 'Archiwum zakończonych wydarzeń studenckich, integracji, inauguracji, otrzęsin, clubbingów i juwenaliów.',
             'metaImage' => '/assets/images/hero-students-party.png',
             'canonicalPath' => '/archiwum',
+            'metaRobots' => 'noindex, follow',
             'structuredData' => [
                 '@context' => 'https://schema.org',
                 '@type' => 'CollectionPage',
@@ -557,10 +561,6 @@ final class PublicController
                 'name' => $event['venue_name'] ?: $event['city'],
                 'address' => trim(($event['venue_address'] ?: '') . ' ' . $event['city']),
             ],
-            'organizer' => [
-                '@type' => 'Organization',
-                'name' => 'Integracja Studencka',
-            ],
             'inLanguage' => 'pl-PL',
         ];
         if ($event['ticket_url']) {
@@ -580,6 +580,7 @@ final class PublicController
             'metaType' => 'article',
             'canonicalPath' => '/wydarzenia/' . $event['slug'],
             'structuredData' => $eventStructuredData,
+            'metaRobots' => $eventState['finished'] ? 'noindex, follow' : null,
             'event' => $event,
             'clubs' => EventClub::forEvent((int) $event['id']),
             'videos' => $videos ?: EventVideo::DEFAULT_VIDEOS,

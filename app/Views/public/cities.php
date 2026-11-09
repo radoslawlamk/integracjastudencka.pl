@@ -19,7 +19,7 @@
         </div>
         <div class="city-index-sales-cards">
             <article><strong>20</strong><span>miast akademickich</span></article>
-            <article><strong>2010</strong><span>imprezy organizujemy od</span></article>
+            <article><strong>2010</strong><span>wydarzenia promujemy od</span></article>
             <article><strong>SMS / email</strong><span>powiadomienia o terminach</span></article>
         </div>
     </section>

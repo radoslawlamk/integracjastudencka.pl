@@ -38,7 +38,7 @@ $nextEventDate = $nextEvent ? date('d.m.Y', strtotime($nextEvent['starts_at'])) 
                 </article>
                 <article>
                     <strong>2010</strong>
-                    <span>organizujemy imprezy od</span>
+                    <span>promujemy wydarzenia od</span>
                 </article>
             </div>
         </div>
@@ -54,7 +54,7 @@ $nextEventDate = $nextEvent ? date('d.m.Y', strtotime($nextEvent['starts_at'])) 
                 <article>
                     <span>Duża frekwencja</span>
                     <strong>Studenci z całego miasta i województwa</strong>
-                    <p>Naszą największą atrakcją są ludzie. Tworzymy wydarzenia, na których łatwo spotkać znajomych, poznać nowe osoby i wejść w prawdziwy akademicki klimat.</p>
+                    <p>Promujemy wydarzenia, na których można spotkać znajomych, poznać nowe osoby i poczuć akademicki klimat.</p>
                 </article>
                 <article>
                     <span>Najważniejsze formaty</span>

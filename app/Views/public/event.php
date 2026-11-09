@@ -336,9 +336,9 @@ $clubbingEmbedVideos = [
             <div class="clubbing-explainer-head">
                 <div>
                     <p class="eyebrow"><?= $isClubbing ? 'Studencki clubbing' : 'Video' ?></p>
-                    <h2><?= $isClubbing ? 'Zobacz, na czym polega clubbing' : 'Zobacz, jak wyglądają nasze imprezy' ?></h2>
+                    <h2><?= $isClubbing ? 'Zobacz, na czym polega clubbing' : 'Zobacz, jak wyglądają promowane wydarzenia' ?></h2>
                 </div>
-                <p><?= $isClubbing ? 'Jeden bilet, kilka klubów, tysiące uczestników i trasa po najlepszych lokalach w mieście. Tak wygląda klimat naszych największych clubbingów z poprzednich lat.' : 'Zobacz energię, frekwencję i atmosferę wydarzeń, które organizujemy dla studentów w największych miastach akademickich.' ?></p>
+                <p><?= $isClubbing ? 'Jeden bilet, kilka klubów, tysiące uczestników i trasa po najlepszych lokalach w mieście. Tak wygląda klimat promowanych przez nas clubbingów z poprzednich lat.' : 'Zobacz energię, frekwencję i atmosferę wydarzeń, które promujemy wśród studentów w największych miastach akademickich.' ?></p>
             </div>
             <div class="clubbing-embed-grid">
                 <?php foreach ($clubbingEmbedVideos as $video): ?>

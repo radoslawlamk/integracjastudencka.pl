@@ -3,7 +3,7 @@
         <div>
             <p class="hero-kicker">Największe i najważniejsze imprezy w miastach akademickich</p>
             <h1 class="hero-title">Integracja Studencka</h1>
-            <p class="hero-lead">Jedno miejsce dla studentów, którzy chcą szybko znaleźć Inauguracje, Integracje, Otrzęsiny, Połowinki i inne duże wydarzenia akademickie w swoim mieście.</p>
+            <p class="hero-lead">Promujemy wydarzenia studenckie i akademickie. Jedno miejsce dla studentów, którzy chcą szybko znaleźć Inauguracje, Integracje, Otrzęsiny, Połowinki i inne duże wydarzenia akademickie w swoim mieście.</p>
             <div class="hero-actions">
                 <a class="btn primary" href="#wydarzenia">Zobacz wydarzenia</a>
                 <a class="btn" href="#powiadomienia">Bądź na bieżąco</a>
@@ -74,10 +74,10 @@
     <section class="event-types-section" id="rodzaje-imprez">
         <div class="event-types-head">
             <div>
-                <p class="eyebrow">Jakie imprezy organizujemy?</p>
+                <p class="eyebrow">Jakie wydarzenia promujemy?</p>
                 <h2>Największe formaty wydarzeń studenckich</h2>
-                <p class="event-types-promo"><span>Od 2010 roku</span> Tworzymy największe wydarzenia studenckie w Polsce. Integrujemy tysiące studentów podczas imprez, które na długo zostają w pamięci.</p>
-                <p class="event-types-crowd">Ogromna frekwencja i wyjątkowa atmosfera - to nasz znak rozpoznawczy.</p>
+                <p class="event-types-promo"><span>Od 2010 roku</span> Promujemy wydarzenia studenckie i akademickie w Polsce. Pomagamy studentom odkrywać imprezy i znajdować informacje o najbliższych terminach.</p>
+                <p class="event-types-crowd">Odkrywaj wydarzenia, poznawaj ich program i wybieraj akademickie imprezy dla siebie.</p>
             </div>
             <p>Od pierwszych tygodni roku akademickiego po juwenalia i wyjazdy studenckie. W jednym miejscu zbieramy wydarzenia, których studenci szukają najczęściej.</p>
         </div>

@@ -45,7 +45,7 @@
         <p><strong>Bilet</strong> – dokument elektroniczny lub papierowy uprawniający do udziału w wydarzeniu, sprzedawany przez operatora sprzedaży biletów.</p>
 
         <h2>§ 3. Charakter Serwisu</h2>
-        <p>IntegracjaStudencka.pl jest portalem internetowym o charakterze informacyjnym, promocyjnym oraz marketingowym.</p>
+        <p>Integracja Studencka jest wyłącznie promotorem wydarzeń studenckich i akademickich, a nie ich organizatorem ani współorganizatorem. Serwis IntegracjaStudencka.pl służy publikowaniu informacji i promocji wydarzeń organizowanych przez odrębne podmioty.</p>
         <p>Celem Serwisu jest prezentowanie wydarzeń skierowanych przede wszystkim do studentów oraz osób pełnoletnich zainteresowanych uczestnictwem w wydarzeniach.</p>
         <p>Serwis umożliwia w szczególności:</p>
         <ul>
